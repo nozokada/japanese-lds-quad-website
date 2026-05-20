@@ -43,7 +43,7 @@ features                                  :
     fontawesome_icon_name                 : language
 
   - title                                 : Blazing Fast Search
-    description                           : Search for a phrase in Japanese or English and get results less than a second
+    description                           : Search for a phrase in Japanese or English and get results in less than a second
     fontawesome_icon_name                 : search
 
   - title                                 : Easy Bookmarks
