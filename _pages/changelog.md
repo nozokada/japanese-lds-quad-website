@@ -159,8 +159,8 @@ Apr 13, 2017
 #### What's New
 - Optimized for the iPad 
 - Added English (U.S.) hymns corresponding to Japanese hymns
-- Added a zoom in/out button at the bottom right corner of screen
-Added settings menu which pops over when the cog icon on the bottom left of screen is tapped
+- Added a zoom in/out button at the bottom right corner of the screen
+- Added settings menu which pops over when the cog icon on the bottom left of the screen is tapped
 
 <br>
 
@@ -168,8 +168,8 @@ Added settings menu which pops over when the cog icon on the bottom left of scre
 Apr 25, 2017
 #### What's New
 - Added the Home button that takes the user straight back to the top page
-- Moved the English on/off switch to the bottom center of screen
-- Moved the cog icon for the settings menu to the top right of screen
+- Moved the English on/off switch to the bottom center of the screen
+- Moved the cog icon for the settings menu to the top right of the screen
 - Added the pop-up settings menu
 - Added more English text to the Book of Mormon, Doctrine and Covenants, and Pearl of Great Price
 
