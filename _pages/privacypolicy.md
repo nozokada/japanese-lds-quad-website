@@ -5,7 +5,7 @@ include_in_header: false
 ---
 
 **Last updated**  
-April 14 2024
+April 14, 2024
 
 # Privacy Policy
 Nozomi Okada offers the Japanese LDS Quad app as a freemium service, provided as is.
