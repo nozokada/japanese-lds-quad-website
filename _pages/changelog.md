@@ -9,6 +9,44 @@ include_in_header: true
 <br>
 
 ### `Latest`
+# **iOS Version 6.1**
+May 19, 2026
+#### Bug Fixes
+- Fixed highlight sync reliability and atomicity across devices
+
+<br>
+
+# **iOS Version 6.0**
+May 7, 2026
+#### What's New
+- Added account system to sign in and sync data across devices
+- Added breadcrumb navigation for quick access to book and chapter lists
+- Added highlight support for Hymns
+- Refreshed UI with SF Symbols
+
+<br>
+
+# **Android Version 4.0**
+May 7, 2026
+#### What's New
+- Rebuilt the app from the ground up with a fresh UI
+- Updated to Android SDK 34
+
+<br>
+
+________
+<br>
+
+# **Android Version 3.8**
+Apr 15, 2024
+#### What's New
+- Updated to Android SDK 34
+
+<br>
+
+________
+<br>
+
 # **Version 5.0**
 Jun 8, 2020
 #### What's New
