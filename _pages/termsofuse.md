@@ -25,6 +25,19 @@ You agree not to:
 ## Intellectual Property
 The app and its original content, features, and functionality are the property of Nozomi Okada. The scripture and hymn content is the property of The Church of Jesus Christ of Latter-day Saints. The Japanese Bible text is the property of the Japan Bible Society. All rights are reserved by their respective owners.
 
+## Gappon Premium
+Gappon offers an optional subscription called Gappon Premium, which unlocks the following features:
+- Cloud sync for bookmarks & highlights
+- Side by side view
+- Hide furigana
+- Passage lookup by verse number
+- Highlighting and notes
+- Text-to-speech playback
+- Joseph Smith Translation (JST)
+- Navigation bar hierarchy jumps
+
+Gappon Premium is a subscription that automatically renews unless canceled at least 24 hours before the end of the current billing period. You can manage or cancel your subscription at any time through your App Store (iOS) or Google Play (Android) account settings. Payments are billed and managed by Apple or Google, and refunds are subject to their respective policies.
+
 ## Disclaimer
 The app is provided "as is" without warranties of any kind, either express or implied. Nozomi Okada does not warrant that the app will be error-free or uninterrupted. To the fullest extent permitted by law, Nozomi Okada shall not be liable for any damages arising from your use of the app.
 
@@ -63,6 +76,19 @@ Gappon（以下「本アプリ」といいます）は、Nozomi Okadaが提供�
 
 ## 知的財産権
 本アプリおよびそのオリジナルコンテンツ、機能はNozomi Okadaの所有物です。聖典および賛美歌集のコンテンツは末日聖徒イエス・キリスト教会に帰属します。日本語聖書のテキストは日本聖書協会に帰属します。すべての権利はそれぞれの権利者に帰属します。
+
+## Gapponプレミアム
+Gapponでは、以下の機能を利用できる「Gapponプレミアム」というオプションのサブスクリプションを提供しています。
+- しおり・印のクラウド同期
+- 日英横並び表示
+- ふりがなを非表示
+- 節番号で検索
+- 印付けとメモ
+- 読み上げ機能
+- ジョセフ・スミス訳（JST）
+- ナビゲーションバーの階層移動
+
+Gapponプレミアムは、現在の請求期間が終了する少なくとも24時間前にキャンセルしない限り、自動的に更新されるサブスクリプションです。サブスクリプションの管理またはキャンセルは、App Store（iOS）またはGoogle Play（Android）のアカウント設定からいつでも行えます。お支払いはAppleまたはGoogleによって管理・請求され、返金はそれぞれのポリシーに従います。
 
 ## 免責事項
 本アプリは、明示または黙示を問わず、いかなる種類の保証もなく「現状のまま」提供されます。Nozomi Okadaは、本アプリがエラーなく、または中断なく動作することを保証しません。法律で許容される最大限の範囲において、Nozomi Okadaは本アプリのご利用に起因するいかなる損害についても責任を負いません。
