@@ -5,7 +5,7 @@ include_in_header: false
 ---
 
 **Last updated**  
-May 25, 2025
+May 25, 2026
 
 # Privacy Policy
 Nozomi Okada offers Gappon as a freemium service, provided as is.
@@ -32,7 +32,7 @@ ________
 
 
 **最終更新日**  
-2025年5月25日
+2026年5月25日
 
 # プライバシーポリシー
 Gappon（以下「本アプリ」といいます）は、Nozomi Okadaによりフリーミアムアプリとして提供されています。本アプリに関するサービス（以下「本サービス」といいます）は、現状のまま提供されています。

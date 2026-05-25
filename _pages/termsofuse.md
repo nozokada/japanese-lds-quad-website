@@ -5,7 +5,7 @@ include_in_header: false
 ---
 
 **Last updated**  
-May 25, 2025
+May 25, 2026
 
 # Terms of Use
 Gappon is a freemium app offered by Nozomi Okada. It is a bilingual scripture reader that provides access to the four standard works of The Church of Jesus Christ of Latter-day Saints — the Bible, the Book of Mormon, the Doctrine and Covenants, and the Pearl of Great Price — as well as the Hymns, in both Japanese and English.
@@ -57,7 +57,7 @@ ________
 
 
 **最終更新日**  
-2025年5月25日
+2026年5月25日
 
 # 利用規約
 Gappon（以下「本アプリ」といいます）は、Nozomi Okadaが提供するフリーミアムアプリです。末日聖徒イエス・キリスト教会の4つの標準聖典（聖書、モルモン書、教義と聖約、高価な真珠）および賛美歌集を、日本語と英語のバイリンガルで提供する聖典リーダーです。
