@@ -8,7 +8,7 @@ include_in_header: false
 May 25, 2025
 
 # Privacy Policy
-Nozomi Okada offers the Japanese LDS Quad app as a freemium service, provided as is.
+Nozomi Okada offers Gappon as a freemium service, provided as is.
 
 This privacy policy is intended to inform you about the collection, use, and disclosure of personal information when you use our service.
 
@@ -35,7 +35,7 @@ ________
 2025年5月25日
 
 # プライバシーポリシー
-末日聖徒合本（以下「本アプリ」といいます）は、Nozomi Okadaによりフリーミアムアプリとして提供されています。本アプリに関するサービス（以下「本サービス」といいます）は、現状のまま提供されています。
+Gappon（以下「本アプリ」といいます）は、Nozomi Okadaによりフリーミアムアプリとして提供されています。本アプリに関するサービス（以下「本サービス」といいます）は、現状のまま提供されています。
 
 このプライバシーポリシーは、ご利用になる皆様（以下「利用者」といいます）の個人情報の収集、使用、開示についてお知らせするものです。
 
