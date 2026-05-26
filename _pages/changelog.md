@@ -8,15 +8,12 @@ include_in_header: true
 
 <br>
 
-### `Latest`
-# **iOS Version 6.1**
-May 19, 2026
-#### Bug Fixes
-- Fixed highlight sync reliability and atomicity across devices
+## iOS
 
 <br>
 
-# **iOS Version 6.0**
+### `Latest`
+# **Version 6.0**
 May 7, 2026
 #### What's New
 - Added account system to sign in and sync data across devices
@@ -26,21 +23,19 @@ May 7, 2026
 
 <br>
 
-# **Android Version 4.0**
-May 7, 2026
+### **Version 6.1**
+May 19, 2026
 #### What's New
-- Rebuilt the app from the ground up with a fresh UI
-- Updated to Android SDK 34
+- Fixed highlight sync reliability and atomicity across devices
 
 <br>
 
-________
-<br>
-
-# **Android Version 3.8**
-Apr 15, 2024
+### **Version 6.2**
+May 23, 2026
 #### What's New
-- Updated to Android SDK 34
+- Added Hide Furigana setting to hide ruby annotations for a cleaner reading experience (Gappon Premium)
+- Fixed a crash when adding a highlight with cloud sync enabled
+- Fixed content background not extending to the bottom of the screen
 
 <br>
 
@@ -142,7 +137,6 @@ Mar 9, 2019
 
 <br>
 
-
 ________
 <br>
 
@@ -191,5 +185,32 @@ ________
 ### `Initial Release`
 # **Version 1.0**
 Nov 28, 2016
+
+<br>
+
+________
+________
+
+<br>
+
+## Android
+
+<br>
+
+### `Latest`
+# **Version 4.0**
+May 25, 2026
+#### What's New
+- Rebuilt the app from the ground up with a fresh UI
+
+<br>
+
+________
+<br>
+
+# **Version 3.8**
+Apr 15, 2024
+#### What's New
+- Updated to Android SDK 34
 
 <br>
