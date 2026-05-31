@@ -205,6 +205,17 @@ May 25, 2026
 
 <br>
 
+### **Version 4.1**
+May 30, 2026
+#### Bug Fixes
+- Fixed a crash that occurred when tapping a list item multiple times quickly
+- Fixed a crash that occurred when navigating away from a scripture page before it finished loading
+- Fixed an issue where links in the Bible Dictionary disappeared after switching tabs
+- Fixed an issue where the highlighted verse title in the note sheet was always shown in Japanese
+- Fixed a white flash that appeared briefly when opening content in dark mode
+
+<br>
+
 ________
 <br>
 
