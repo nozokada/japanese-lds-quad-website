@@ -39,6 +39,15 @@ May 23, 2026
 
 <br>
 
+### **Version 6.3**
+May 30, 2026
+#### What's New
+- Simplified the text selection menu by removing the redundant "Copy (no ruby)" option — use Hide Furigana in Settings to copy text without ruby
+- Hyperlink color in content views is now easier to read in dark mode
+- Improved app startup performance
+
+<br>
+
 ________
 <br>
 
