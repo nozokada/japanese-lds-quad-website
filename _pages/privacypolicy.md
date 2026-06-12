@@ -5,7 +5,7 @@ include_in_header: false
 ---
 
 **Last updated**  
-May 25, 2026
+June 12, 2026
 
 # Privacy Policy
 Nozomi Okada offers Gappon as a freemium service, provided as is.
@@ -17,7 +17,7 @@ By using our service, you agree to the collection and use of information as desc
 ## Information Collection and Use
 To enhance your experience with our service, we may ask you to provide certain personally identifiable information, such as your username and email address. This information is retained and used solely for the purpose of providing and improving our service.
 
-The app utilizes Google Firebase, a real-time database service provided by Google LLC, which may collect information to identify you. Please refer to Firebase's privacy policy at [https://firebase.google.com/support/privacy](https://firebase.google.com/support/privacy) for more information.
+The app uses Google Firebase services (Google LLC), including a real-time database and Crashlytics for crash reporting. Firebase may collect information to identify you. When a crash occurs, Crashlytics automatically collects non-personal diagnostic data such as stack traces, device model, OS version, and app version. For more information, please refer to Google's privacy policy at [https://policies.google.com/privacy](https://policies.google.com/privacy).
 
 ## Data Retention
 We retain your personal information for as long as your account remains active. If you wish to have your data deleted, please contact us at [nozokada@gmail.com](mailto:nozokada@gmail.com) and we will remove it promptly.
@@ -32,7 +32,7 @@ ________
 
 
 **最終更新日**  
-2026年5月25日
+2026年6月12日
 
 # プライバシーポリシー
 Gappon（以下「本アプリ」といいます）は、Nozomi Okadaによりフリーミアムアプリとして提供されています。本アプリに関するサービス（以下「本サービス」といいます）は、現状のまま提供されています。
@@ -44,7 +44,7 @@ Gappon（以下「本アプリ」といいます）は、Nozomi Okadaにより�
 ## 取得情報および利用目的
 本サービスのさらなる品質向上のために、ユーザー名やEメールアドレスなどの特定の個人情報を提供していただく場合があります。この情報は、本サービスの提供と改善のためにのみ保持され、使用されます。
 
-本アプリは、Google LLCが提供するリアルタイムデータベースサービスであるGoogle Firebaseを利用しており、個人を特定する情報を収集する場合があります。詳細については、Firebaseのプライバシーポリシー[https://firebase.google.com/support/privacy?hl=ja](https://firebase.google.com/support/privacy?hl=ja)をご確認ください。
+本アプリは、Google LLCが提供するGoogle Firebaseサービス（リアルタイムデータベース、およびクラッシュレポートのためのFirebase Crashlytics）を利用しています。Firebaseは個人を特定する情報を収集する場合があります。また、クラッシュ発生時にはCrashlyticsがスタックトレース・デバイス情報（機種名・OSバージョン）・アプリバージョン等の診断情報を自動収集しますが、これらは個人を特定するものではありません。詳細については、Googleのプライバシーポリシー（[https://policies.google.com/privacy?hl=ja](https://policies.google.com/privacy?hl=ja)）をご確認ください。
 
 ## データの保持
 お客様の個人情報は、アカウントが有効な期間中保持されます。データの削除をご希望の場合は、[nozokada@gmail.com](mailto:nozokada@gmail.com)までご連絡いただければ、速やかに削除いたします。
