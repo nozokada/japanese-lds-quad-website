@@ -5,7 +5,7 @@ include_in_header: false
 ---
 
 **Last updated**  
-May 25, 2026
+July 12, 2026
 
 # Terms of Use
 Gappon is a freemium app offered by Nozomi Okada. It is a bilingual scripture reader that provides access to the four standard works of The Church of Jesus Christ of Latter-day Saints — the Bible, the Book of Mormon, the Doctrine and Covenants, and the Pearl of Great Price — as well as the Hymns, in both Japanese and English.
@@ -36,7 +36,12 @@ Gappon offers an optional subscription called Gappon Premium, which unlocks the 
 - Joseph Smith Translation (JST)
 - Navigation bar hierarchy jumps
 
-Gappon Premium is a subscription that automatically renews unless canceled at least 24 hours before the end of the current billing period. You can manage or cancel your subscription at any time through your App Store (iOS) or Google Play (Android) account settings. Payments are billed and managed by Apple or Google, and refunds are subject to their respective policies.
+Gappon Premium is a subscription that automatically renews unless canceled before the end of the current billing period. You can purchase it in two ways:
+
+- **In the app (iOS / Android):** Payments are billed and managed by Apple or Google. You can manage or cancel your subscription at any time from your App Store (iOS) or Google Play (Android) account settings, and refunds are subject to their respective policies. For App Store purchases, cancellation must be made at least 24 hours before the end of the current period.
+- **On this website:** Payments are processed by Stripe and subscriptions are managed through RevenueCat. You can manage or cancel a website subscription at any time using the "Manage subscription" option on the purchase page after signing in.
+
+Gappon Premium access is tied to your account rather than to a specific device or store. Once a subscription is active, signing in to that account on any supported device unlocks the premium features. Purchasing on behalf of another person's account is permitted, and the person who signs in to that account will receive access.
 
 ## Disclaimer
 The app is provided "as is" without warranties of any kind, either express or implied. Nozomi Okada does not warrant that the app will be error-free or uninterrupted. To the fullest extent permitted by law, Nozomi Okada shall not be liable for any damages arising from your use of the app.
@@ -57,7 +62,7 @@ ________
 
 
 **最終更新日**  
-2026年5月25日
+2026年7月12日
 
 # 利用規約
 Gappon（以下「本アプリ」といいます）は、Nozomi Okadaが提供するフリーミアムアプリです。末日聖徒イエス・キリスト教会の4つの標準聖典（聖書、モルモン書、教義と聖約、高価な真珠）および賛美歌集を、日本語と英語のバイリンガルで提供する聖典リーダーです。
@@ -88,7 +93,12 @@ Gapponでは、以下の機能を利用できる「Gapponプレミアム」と�
 - ジョセフ・スミス訳（JST）
 - ナビゲーションバーの階層移動
 
-Gapponプレミアムは、現在の請求期間が終了する少なくとも24時間前にキャンセルしない限り、自動的に更新されるサブスクリプションです。サブスクリプションの管理またはキャンセルは、App Store（iOS）またはGoogle Play（Android）のアカウント設定からいつでも行えます。お支払いはAppleまたはGoogleによって管理・請求され、返金はそれぞれのポリシーに従います。
+Gapponプレミアムは、現在の請求期間が終了する前にキャンセルしない限り、自動的に更新されるサブスクリプションです。ご購入方法は次の2通りです。
+
+- **アプリ内（iOS／Android）：** お支払いはAppleまたはGoogleによって管理・請求されます。サブスクリプションの管理・キャンセルは、App Store（iOS）またはGoogle Play（Android）のアカウント設定からいつでも行え、返金はそれぞれのポリシーに従います。App Storeでのご購入の場合、キャンセルは現在の期間が終了する少なくとも24時間前に行う必要があります。
+- **本ウェブサイト：** お支払いはStripeにより処理され、サブスクリプションはRevenueCatを通じて管理されます。ウェブサイトでのサブスクリプションは、サインイン後に購入ページの「サブスクリプションを管理」からいつでも管理・キャンセルできます。
+
+Gapponプレミアムのアクセス権は、特定の端末やストアではなく、お客様のアカウントに紐づきます。サブスクリプションが有効な状態であれば、対応する任意の端末でそのアカウントにサインインすることでプレミアム機能が利用可能になります。また、他者のアカウントのために購入することも許可されており、そのアカウントにサインインした方がアクセス権を得ます。
 
 ## 免責事項
 本アプリは、明示または黙示を問わず、いかなる種類の保証もなく「現状のまま」提供されます。Nozomi Okadaは、本アプリがエラーなく、または中断なく動作することを保証しません。法律で許容される最大限の範囲において、Nozomi Okadaは本アプリのご利用に起因するいかなる損害についても責任を負いません。

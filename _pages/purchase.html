@@ -1,0 +1,124 @@
+---
+layout: page
+title: Purchase
+include_in_header: true
+---
+
+<style>
+  /* Sizing in px (the site root is 62.5% = 10px, so rem would render tiny).
+     Fonts/colors inherit from .markdown-body (Lato 16px) for consistency with
+     the other sub-pages; form controls get font-family: inherit explicitly. */
+  .purchase-wrap { max-width: 460px; margin: 0 auto; }
+  .purchase-wrap h1 { margin-bottom: 8px; }
+  .purchase-topbar { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+  .lang-toggle {
+    font-family: inherit; background: none; border: 1px solid #d4d4d8;
+    border-radius: 999px; padding: 6px 14px; font-size: 14px; color: #1d63ea; cursor: pointer;
+  }
+  .lang-toggle:hover { background: #f0f4ff; }
+  .purchase-lead { color: rgba(0,0,0,0.6); margin-bottom: 28px; line-height: 1.6; }
+  .purchase-card {
+    border: 1px solid #e4e4e7; border-radius: 14px; padding: 24px;
+    background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .purchase-card + .purchase-card { margin-top: 16px; }
+  .purchase-card h2 { font-size: 22px; margin-bottom: 12px; }
+  .purchase-field { margin-bottom: 16px; }
+  .purchase-field label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .purchase-field input {
+    font-family: inherit; width: 100%; box-sizing: border-box; padding: 11px 14px;
+    border: 1px solid #d4d4d8; border-radius: 9px; font-size: 16px;
+  }
+  .purchase-field input:focus { outline: none; border-color: #1d63ea; box-shadow: 0 0 0 3px rgba(29,99,234,0.15); }
+  .btn-primary {
+    font-family: inherit; display: block; width: 100%; box-sizing: border-box; padding: 14px 16px;
+    background: #1d63ea; color: #fff; border: none; border-radius: 10px;
+    font-size: 16px; font-weight: 600; cursor: pointer;
+  }
+  .btn-primary:hover:not(:disabled) { background: #1751c4; }
+  .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
+  .btn-secondary {
+    font-family: inherit; display: block; width: 100%; box-sizing: border-box; padding: 12px 16px;
+    background: #fff; color: #444; border: 1px solid #d4d4d8; border-radius: 10px;
+    font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 14px;
+  }
+  .btn-secondary:hover { background: #f4f4f5; }
+  .btn-link {
+    font-family: inherit; background: none; border: none; color: #1d63ea; cursor: pointer;
+    font-size: 14px; padding: 0; margin-top: 14px;
+  }
+  .btn-link:hover { text-decoration: underline; }
+  .msg-error { color: #c0392b; font-size: 14px; margin-top: 12px; }
+  .msg-info { color: #1e7e34; font-size: 14px; margin-top: 12px; }
+  .plan-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px; }
+  .plan-name { font-weight: 600; }
+  .plan-price { font-size: 22px; font-weight: 700; }
+  .account-line { font-size: 14px; color: rgba(0,0,0,0.6); margin-bottom: 16px; }
+  .account-line strong { color: rgba(0,0,0,0.85); }
+  .banner-success {
+    background: #e8f6ec; border: 1px solid #b6e0c2; border-radius: 9px;
+    padding: 11px 14px; margin: 0 0 16px; color: #1e7e34; font-weight: 600;
+  }
+  .note { font-size: 13px; color: rgba(0,0,0,0.5); line-height: 1.6; margin-top: 20px; }
+  .spinner { text-align: center; color: #888; padding: 32px 0; }
+</style>
+
+<div class="purchase-wrap">
+  <div class="purchase-topbar">
+    <button type="button" id="lang-toggle" class="lang-toggle">English</button>
+  </div>
+
+  <h1 data-i18n="title">Gappon Premium のご購入</h1>
+  <p class="purchase-lead" data-i18n="lead"></p>
+
+  <!-- Loading -->
+  <div id="view-loading" class="purchase-card">
+    <div class="spinner" data-i18n="loading">読み込み中…</div>
+  </div>
+
+  <!-- Signed out: login -->
+  <div id="view-signed-out" class="purchase-card" hidden>
+    <form id="form-signin">
+      <div class="purchase-field">
+        <label for="email" data-i18n="label_email">メールアドレス</label>
+        <input type="email" id="email" autocomplete="email" inputmode="email" required>
+      </div>
+      <div class="purchase-field">
+        <label for="password" data-i18n="label_password">パスワード</label>
+        <input type="password" id="password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" id="btn-signin" class="btn-primary" data-i18n="btn_signin">サインイン</button>
+      <button type="button" id="link-forgot" class="btn-link" data-i18n="link_forgot">パスワードをお忘れの場合</button>
+      <p id="signin-error" class="msg-error" hidden></p>
+      <p id="signin-info" class="msg-info" hidden></p>
+    </form>
+    <p class="note" data-i18n="note_signedout"></p>
+  </div>
+
+  <!-- Signed in, not premium: purchase -->
+  <div id="view-signed-in" class="purchase-card" hidden>
+    <p class="account-line"><span data-i18n="signed_in_as">サインイン中のアカウント</span> <strong id="account-email"></strong></p>
+    <div class="plan-row">
+      <span class="plan-name" data-i18n="plan_name">年額サブスクリプション</span>
+      <span class="plan-price" id="plan-price"></span>
+    </div>
+    <button type="button" id="btn-purchase" class="btn-primary" data-i18n="btn_purchase">お支払いへ進む</button>
+    <p id="purchase-error" class="msg-error" hidden></p>
+    <button type="button" class="btn-secondary" data-action="signout" data-i18n="btn_signout">サインアウト</button>
+    <p class="note" data-i18n="note_signedin"></p>
+  </div>
+
+  <!-- Subscription status & management (also shown right after a purchase) -->
+  <div id="view-active" class="purchase-card" hidden>
+    <p id="active-banner" class="banner-success" data-i18n="banner_thanks" hidden>Gappon Premium にご登録いただきありがとうございます。</p>
+    <h2 style="margin-top:0;" data-i18n="status_title">サブスクリプションが有効です</h2>
+    <p class="account-line"><span data-i18n="signed_in_as">サインイン中のアカウント</span> <strong id="active-email"></strong></p>
+    <p id="active-expiry" class="account-line" hidden></p>
+    <p data-i18n="active_body"></p>
+    <button type="button" id="btn-manage" class="btn-primary" data-i18n="btn_manage" hidden>サブスクリプションを管理</button>
+    <button type="button" class="btn-secondary" data-action="signout" data-i18n="btn_signout">サインアウト</button>
+    <p class="note" data-i18n="note_account"></p>
+  </div>
+</div>
+
+<script type="module" src="/assets/js/purchase.js"></script>
