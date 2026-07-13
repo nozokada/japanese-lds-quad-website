@@ -61,6 +61,8 @@ include_in_header: true
   }
   .note { font-size: 13px; color: rgba(0,0,0,0.5); line-height: 1.6; margin-top: 20px; }
   .spinner { text-align: center; color: #888; padding: 32px 0; }
+  .trust-badge { display: flex; justify-content: center; margin-top: 18px; }
+  .trust-badge .stripe-badge { height: 34px; width: auto; display: block; }
 </style>
 
 <div class="purchase-wrap">
@@ -106,6 +108,9 @@ include_in_header: true
     <button type="button" class="btn-secondary" data-action="signout" data-i18n="btn_signout">サインアウト</button>
     <p class="note" data-i18n="note_signedin"></p>
     <p id="purchase-error" class="msg-error" hidden></p>
+    <div class="trust-badge">
+      <img src="/assets/powered-by-stripe.png" alt="Powered by Stripe" class="stripe-badge">
+    </div>
   </div>
 
   <!-- Subscription status & management (also shown right after a purchase) -->
