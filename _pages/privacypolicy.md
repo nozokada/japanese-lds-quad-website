@@ -1,8 +1,11 @@
 ---
 layout: page
 title: Privacy Policy
+nav_key: nav_privacy
 include_in_header: false
 ---
+
+<div data-i18n-block="en" markdown="1">
 
 **Last updated**  
 July 12, 2026
@@ -30,8 +33,9 @@ We may update this privacy policy periodically. We advise you to review this pag
 ## Contact Us
 If you have any questions or suggestions regarding our privacy policy, please don't hesitate to contact us at [nozokada@gmail.com](mailto:nozokada@gmail.com).
 
-________
+</div>
 
+<div data-i18n-block="ja" markdown="1">
 
 **最終更新日**  
 2026年7月12日
@@ -58,3 +62,5 @@ Gappon（以下「本アプリ」といいます）は、Nozomi Okadaにより�
 
 ## お問い合わせ
 本プライバシーポリシーに関するご質問や提案がございましたら、お気軽に[nozokada@gmail.com](mailto:nozokada@gmail.com)までお問い合わせください。
+
+</div>

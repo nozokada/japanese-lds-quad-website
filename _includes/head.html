@@ -4,6 +4,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<base target="_blank">
 
+	<!-- i18n: resolve language before first paint so the correct content blocks
+	     show and no flash of the wrong language occurs. -->
+	<script>
+		(function () {
+			try {
+				var s = localStorage.getItem("gappon_lang");
+				var lang = (s === "ja" || s === "en") ? s
+					: ((navigator.language || "ja").toLowerCase().indexOf("en") === 0 ? "en" : "ja");
+				var d = document.documentElement;
+				d.lang = lang;
+				d.setAttribute("data-lang", lang);
+			} catch (e) {}
+		})();
+	</script>
+	<script>window.GAPPON_I18N = {{ site.data.i18n | jsonify }};</script>
+	<script defer src="/assets/js/i18n.js"></script>
+
 	<title class="pageTitle">{{ site.page_title }}</title>
 	<meta name="description" content="{{ site.app_description }}">
 

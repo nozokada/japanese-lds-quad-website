@@ -127,15 +127,11 @@ const I18N = {
   },
 };
 
-const LANG_STORAGE_KEY = "gappon_lang";
-
-function detectLang() {
-  const saved = localStorage.getItem(LANG_STORAGE_KEY);
-  if (saved === "ja" || saved === "en") return saved;
-  return (navigator.language || "ja").toLowerCase().startsWith("en") ? "en" : "ja";
-}
-
-let currentLang = detectLang();
+// Language is owned by the shared site-wide runtime (assets/js/i18n.js), which
+// handles detection, persistence, the header toggle, and <html lang>. This page
+// keeps its own richer string table (I18N) for the billing-specific and dynamic
+// copy, and re-renders it whenever the shared runtime reports a language change.
+let currentLang = window.Gappon?.i18n?.getLang?.() ?? "ja";
 
 function t(key, params) {
   let s = I18N[currentLang]?.[key] ?? I18N.ja[key] ?? key;
@@ -224,18 +220,16 @@ function renderActiveExpiry() {
 
 function applyLang(lang) {
   currentLang = lang;
-  localStorage.setItem(LANG_STORAGE_KEY, lang);
-  document.documentElement.lang = lang;
   auth.languageCode = lang; // Language for Firebase emails (e.g. password reset)
 
+  // Only this page's own keys live in I18N; site chrome (nav/footer) is handled
+  // by the shared runtime, which skips keys it doesn't know, so both can safely
+  // scan the same [data-i18n] elements.
   const dict = I18N[lang];
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.getAttribute("data-i18n");
     if (dict[key] != null) node.textContent = dict[key];
   });
-
-  const toggle = el("lang-toggle");
-  if (toggle) toggle.textContent = lang === "ja" ? "English" : "日本語";
 
   // Re-render dynamic elements.
   renderPrice();
@@ -496,11 +490,14 @@ onAuthStateChanged(auth, (user) => {
 // Wiring
 // ---------------------------------------------------------------------------
 
-applyLang(currentLang);
+// Render now with the current language and re-render on every change driven by
+// the shared header toggle. onChange invokes the callback immediately.
+if (window.Gappon?.i18n) {
+  window.Gappon.i18n.onChange(applyLang);
+} else {
+  applyLang(currentLang);
+}
 
-el("lang-toggle")?.addEventListener("click", () =>
-  applyLang(currentLang === "ja" ? "en" : "ja")
-);
 el("form-signin")?.addEventListener("submit", handleSignIn);
 el("link-forgot")?.addEventListener("click", handleForgotPassword);
 el("btn-purchase")?.addEventListener("click", handlePurchase);

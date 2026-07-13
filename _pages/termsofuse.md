@@ -1,8 +1,11 @@
 ---
 layout: page
 title: Terms of Use
+nav_key: nav_terms
 include_in_header: false
 ---
+
+<div data-i18n-block="en" markdown="1">
 
 **Last updated**  
 July 12, 2026
@@ -58,8 +61,9 @@ These terms are governed by the laws of the State of California, without regard 
 ## Contact Us
 If you have any questions or suggestions regarding these terms, please contact us at [nozokada@gmail.com](mailto:nozokada@gmail.com).
 
-________
+</div>
 
+<div data-i18n-block="ja" markdown="1">
 
 **最終更新日**  
 2026年7月12日
@@ -114,3 +118,5 @@ Gapponプレミアムのアクセス権は、特定の端末やストアでは�
 
 ## お問い合わせ
 本利用規約に関するご質問や提案がございましたら、[nozokada@gmail.com](mailto:nozokada@gmail.com)までお問い合わせください。
+
+</div>

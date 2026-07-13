@@ -34,31 +34,38 @@ youtube_username                          :
 # Feature List                            Edit, add or remove features to be presented.
 features                                  :
 
-  - title                                 : All-in-One App
+  - key                                   : all_in_one
+    title                                 : All-in-One App
     description                           : All Japanese LDS standard works and the Hymns are included
     fontawesome_icon_name                 : book
 
-  - title                                 : Bilingual Support
+  - key                                   : bilingual
+    title                                 : Bilingual Support
     description                           : Read the scriptures in Japanese and English side by side
     fontawesome_icon_name                 : language
 
-  - title                                 : Blazing Fast Search
+  - key                                   : search
+    title                                 : Blazing Fast Search
     description                           : Search for a phrase in Japanese or English and get results in less than a second
     fontawesome_icon_name                 : search
 
-  - title                                 : Easy Bookmarks
+  - key                                   : bookmarks
+    title                                 : Easy Bookmarks
     description                           : Just tap a verse to get quick access for future reference
     fontawesome_icon_name                 : bookmark
 
-  - title                                 : Highlights and Notes
+  - key                                   : highlights
+    title                                 : Highlights and Notes
     description                           : Highlight verses and write down your thoughts that you don't want to forget
     fontawesome_icon_name                 : highlighter
 
-  - title                                 : Text-to-Speech Support
+  - key                                   : tts
+    title                                 : Text-to-Speech Support
     description                           : Let the app read the scriptures out loud at your favorite speed
     fontawesome_icon_name                 : file-audio
 
-  - title                                 : Account & Sync
+  - key                                   : sync
+    title                                 : Account & Sync
     description                           : Sign in to sync your bookmarks and highlights across all your devices
     fontawesome_icon_name                 : sync
 

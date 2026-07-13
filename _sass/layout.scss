@@ -184,6 +184,7 @@ header {
 nav > ul {
 	color: #fff;
 	display: flex;
+	align-items: center;
 	list-style-type: none;
 
 }
@@ -711,4 +712,41 @@ footer {
 
 .hidden {
 	display: none;
+}
+
+
+
+// Client-side i18n (see assets/js/i18n.js)
+
+// Long-form content blocks: show only the block matching the current language.
+// Keyed on <html data-lang>, which is set before first paint to avoid a flash.
+html[data-lang="ja"] [data-i18n-block="en"],
+html[data-lang="en"] [data-i18n-block="ja"] {
+	display: none;
+}
+
+// Language toggle in the header nav. Inherits the surrounding nav color so it
+// reads correctly on both the dark homepage header and the light sub-page header.
+.langToggle {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1.2;
+	background: none;
+	border: 1px solid currentColor;
+	border-radius: 999px;
+	padding: 4px 12px;
+	cursor: pointer;
+	color: rgba($header-title-color, 0.6);
+}
+
+.langToggle:hover {
+	color: rgba($header-title-color, 1);
+}
+
+.subPageHeaderBackground .langToggle {
+	color: rgba(#000, 0.6);
+}
+
+.subPageHeaderBackground .langToggle:hover {
+	color: rgba(#000, 1);
 }

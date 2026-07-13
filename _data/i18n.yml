@@ -1,0 +1,74 @@
+# Site-wide UI string translations (Japanese / English).
+#
+# Consumed client-side: _includes/head.html injects this file as
+# `window.GAPPON_I18N` and assets/js/i18n.js swaps `data-i18n="key"` elements.
+# Long-form content (legal pages, changelog) is NOT stored here — it lives inline
+# in each page inside `data-i18n-block` containers.
+
+# Navigation / footer links (keyed by each page's `nav_key` front matter)
+nav_purchase:
+  ja: "プレミアム購入"
+  en: "Purchase Premium"
+nav_changelog:
+  ja: "更新履歴"
+  en: "What's New"
+nav_privacy:
+  ja: "プライバシーポリシー"
+  en: "Privacy Policy"
+nav_terms:
+  ja: "利用規約"
+  en: "Terms of Use"
+
+# Homepage hero + meta description
+app_description:
+  ja: "日本語話者のための必携の末日聖徒標準聖典アプリ"
+  en: "The must-have LDS standard works app for Japanese-speaking people"
+
+# Footer credit. {name} and {city} are filled from _config.yml at runtime.
+footer_made_by:
+  ja: "制作: {name}（{city}）"
+  en: "Made by {name} in {city}"
+
+# Feature grid (keys match the `key` of each entry in _config.yml `features`)
+all_in_one_title:
+  ja: "オールインワン"
+  en: "All-in-One App"
+all_in_one_desc:
+  ja: "日本語の標準聖典と賛美歌をすべて収録"
+  en: "All Japanese LDS standard works and the Hymns are included"
+bilingual_title:
+  ja: "バイリンガル対応"
+  en: "Bilingual Support"
+bilingual_desc:
+  ja: "日本語と英語の聖典を並べて読めます"
+  en: "Read the scriptures in Japanese and English side by side"
+search_title:
+  ja: "高速検索"
+  en: "Blazing Fast Search"
+search_desc:
+  ja: "日本語でも英語でも、1秒未満で検索結果を表示"
+  en: "Search for a phrase in Japanese or English and get results in less than a second"
+bookmarks_title:
+  ja: "かんたんしおり"
+  en: "Easy Bookmarks"
+bookmarks_desc:
+  ja: "節をタップするだけで、後から素早くアクセス"
+  en: "Just tap a verse to get quick access for future reference"
+highlights_title:
+  ja: "印付けとメモ"
+  en: "Highlights and Notes"
+highlights_desc:
+  ja: "節に印を付け、忘れたくない思いを書き留められます"
+  en: "Highlight verses and write down your thoughts that you don't want to forget"
+tts_title:
+  ja: "読み上げ対応"
+  en: "Text-to-Speech Support"
+tts_desc:
+  ja: "お好みの速度で聖典を音声で読み上げます"
+  en: "Let the app read the scriptures out loud at your favorite speed"
+sync_title:
+  ja: "アカウントと同期"
+  en: "Account & Sync"
+sync_desc:
+  ja: "サインインすれば、しおりや印をすべての端末で同期"
+  en: "Sign in to sync your bookmarks and highlights across all your devices"
