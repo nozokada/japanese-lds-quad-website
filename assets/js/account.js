@@ -56,7 +56,7 @@ const I18N = {
   ja: {
     title: "マイアカウント",
     lead:
-      "Gappon のアカウント管理と Gappon Premium のご購入ができます。ご利用になるアカウントでサインイン（または作成）してください。アプリで同じアカウントにサインインすると、全機能をご利用いただけます。",
+      "Gappon Premium のご購入とアカウント管理ができます。ご購入後、同じアカウントでアプリにサインインすると全機能をご利用いただけます。",
     loading: "読み込み中…",
     promo_annual:
       "年額プランなら、月額プランよりお得にご利用いただけます。",
@@ -76,7 +76,6 @@ const I18N = {
     note_signup:
       "すでに Gappon アプリでアカウントをお持ちの場合は、新しく作成せず「サインイン」をご利用ください。二重に作成すると、ご購入が別のアカウントに紐づいてしまう場合があります。",
     signed_in_as: "サインイン中のアカウント",
-    account_card_title: "アカウント",
     premium_title: "Gappon Premium",
     plan_name: "年額プラン",
     btn_purchase: "お支払いへ進む",
@@ -167,7 +166,7 @@ const I18N = {
   en: {
     title: "My Account",
     lead:
-      "Manage your Gappon account and get Gappon Premium. Sign in (or create an account) with the account you'd like to use, then sign in to that same account in the app to enjoy full access.",
+      "Get Gappon Premium and manage your account here. After purchasing, sign in to the app with the same account to enjoy full access.",
     loading: "Loading…",
     promo_annual:
       "Choose the annual plan and pay less than you would month to month.",
@@ -187,7 +186,6 @@ const I18N = {
     note_signup:
       "If you already have an account in the Gappon app, please use \"Sign in\" instead of creating a new one. Creating a duplicate account may link your purchase to a different account.",
     signed_in_as: "Signed in as",
-    account_card_title: "Account",
     premium_title: "Gappon Premium",
     plan_name: "Annual plan",
     btn_purchase: "Continue to payment",
