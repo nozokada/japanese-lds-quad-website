@@ -14,7 +14,7 @@ import {
   onAuthStateChanged,
   sendPasswordResetEmail,
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
-import { Purchases } from "https://esm.sh/@revenuecat/purchases-js@1";
+import { Purchases, PurchasesError, ErrorCode } from "https://esm.sh/@revenuecat/purchases-js@1";
 
 // ---------------------------------------------------------------------------
 // Config (public keys)
@@ -265,6 +265,14 @@ function hasPremium(customerInfo) {
   return Boolean(customerInfo?.entitlements?.active?.[ENTITLEMENT_ID]);
 }
 
+function isUserCancelled(err) {
+  return (
+    (err instanceof PurchasesError && err.errorCode === ErrorCode.UserCancelledError) ||
+    err?.errorCode === ErrorCode.UserCancelledError ||
+    /cancel/i.test(err?.message || "")
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Resolve entitlement state after sign-in
 // ---------------------------------------------------------------------------
@@ -423,8 +431,11 @@ async function handlePurchase() {
       btn.disabled = false;
     }
   } catch (err) {
-    // Do not surface an error when the user cancels.
-    if (err?.errorCode === "UserCancelledError" || /cancel/i.test(err?.message || "")) {
+    // Do not surface an error when the user simply closes/leaves the checkout.
+    // The SDK throws a PurchasesError with errorCode ErrorCode.UserCancelledError
+    // (a numeric enum) and no message, so we must compare against the enum value
+    // rather than a string. The message check is a defensive fallback only.
+    if (isUserCancelled(err)) {
       btn.disabled = false;
       return;
     }
