@@ -58,6 +58,8 @@ const I18N = {
     lead:
       "Gappon のアカウント管理と Gappon Premium のご購入ができます。ご利用になるアカウントでサインイン（または作成）してください。アプリで同じアカウントにサインインすると、全機能をご利用いただけます。",
     loading: "読み込み中…",
+    promo_annual:
+      "年額プランなら、月額プランよりお得にご利用いただけます。",
     label_username: "ユーザー名",
     label_email: "メールアドレス",
     label_email_confirm: "メールアドレス（確認のため再入力）",
@@ -76,11 +78,22 @@ const I18N = {
     signed_in_as: "サインイン中のアカウント",
     account_card_title: "アカウント",
     premium_title: "Gappon Premium",
-    plan_name: "年額サブスクリプション",
+    plan_name: "年額プラン",
     btn_purchase: "お支払いへ進む",
     btn_signout: "サインアウト",
     btn_account_settings: "アカウント設定",
     btn_manage: "サブスクリプションを管理",
+    manage_note_appstore:
+      "このサブスクリプションは App Store でご購入いただいたものです。変更・解約は端末の「設定」→ Apple ID →「サブスクリプション」から行えます。",
+    manage_note_play:
+      "このサブスクリプションは Google Play でご購入いただいたものです。変更・解約は Play ストアの「お支払いと定期購入」→「定期購入」から行えます。",
+    manage_note_amazon:
+      "このサブスクリプションは Amazon アプリストアでご購入いただいたものです。変更・解約は Amazon の「アプリライブラリ」→「サブスクリプション」から行えます。",
+    store_name_appstore: "App Store",
+    store_name_play: "Google Play",
+    store_name_amazon: "Amazon アプリストア",
+    manage_note_lifetime:
+      "このご利用権は {store} での買い切り購入によるものです。ご購入内容は {store} のアカウントからご確認いただけます。",
     note_signedin:
       "お支払いは Stripe により安全に処理されます。年額の自動更新で、いつでも解約いただけます。",
     status_title: "サブスクリプションが有効です",
@@ -156,6 +169,8 @@ const I18N = {
     lead:
       "Manage your Gappon account and get Gappon Premium. Sign in (or create an account) with the account you'd like to use, then sign in to that same account in the app to enjoy full access.",
     loading: "Loading…",
+    promo_annual:
+      "Choose the annual plan and pay less than you would month to month.",
     label_username: "Username",
     label_email: "Email",
     label_email_confirm: "Email (re-enter to confirm)",
@@ -174,11 +189,22 @@ const I18N = {
     signed_in_as: "Signed in as",
     account_card_title: "Account",
     premium_title: "Gappon Premium",
-    plan_name: "Annual subscription",
+    plan_name: "Annual plan",
     btn_purchase: "Continue to payment",
     btn_signout: "Sign out",
     btn_account_settings: "Account settings",
     btn_manage: "Manage subscription",
+    manage_note_appstore:
+      "This subscription was purchased through the App Store. To change or cancel it, go to Settings → your Apple ID → Subscriptions on your device.",
+    manage_note_play:
+      "This subscription was purchased through Google Play. To change or cancel it, open the Play Store → Payments & subscriptions → Subscriptions.",
+    manage_note_amazon:
+      "This subscription was purchased through the Amazon Appstore. To change or cancel it, open Amazon → App Library → Subscriptions.",
+    store_name_appstore: "the App Store",
+    store_name_play: "Google Play",
+    store_name_amazon: "the Amazon Appstore",
+    manage_note_lifetime:
+      "This access came from a one-time purchase on {store}. You can review it from your account on {store}.",
     note_signedin:
       "Payments are processed securely by Stripe. Your subscription renews annually and can be canceled at any time.",
     status_title: "Your subscription is active",
@@ -255,7 +281,9 @@ let currentLang = window.Gappon?.i18n?.getLang?.() ?? "ja";
 function t(key, params) {
   let s = I18N[currentLang]?.[key] ?? I18N.ja[key] ?? key;
   if (params) {
-    for (const [k, v] of Object.entries(params)) s = s.replace(`{${k}}`, v);
+    // Replace every occurrence (split/join avoids regex escaping and handles a
+    // placeholder that appears more than once, e.g. "{store} … {store}").
+    for (const [k, v] of Object.entries(params)) s = s.split(`{${k}}`).join(v);
   }
   return s;
 }
@@ -345,6 +373,60 @@ function renderActiveExpiry() {
   node.hidden = false;
 }
 
+// Decide how the active subscription can be managed, based on the store that
+// unlocked it:
+//   - Web Billing (rc_billing / stripe): show the "Manage subscription" button,
+//     which opens the RevenueCat/Stripe customer portal (managementURL). This is
+//     the only case where the subscription can actually be managed from the web.
+//   - A mobile store (App Store / Play / Amazon): the subscription must be managed
+//     in that store's own settings, not on the web, so show an explanatory note
+//     instead of a (non-functional) button.
+//   - A permanent/non-subscription entitlement (e.g. the legacy lifetime buy-out)
+//     has nothing to manage: no button, no note.
+function renderManageControls() {
+  const btn = el("btn-manage");
+  const store = activeEntitlement?.store || "";
+  const url = activeEntitlement?.managementUrl || null;
+  const webManaged = store === "rc_billing" || store === "stripe";
+  const storeManaged =
+    store === "app_store" ||
+    store === "mac_app_store" ||
+    store === "play_store" ||
+    store === "amazon";
+  // Only subscriptions (renewing, or cancelled-but-still-active until an expiry)
+  // are worth pointing at store management; a lifetime buy-out has no expiry.
+  const isSubscription =
+    Boolean(activeEntitlement?.willRenew) || Boolean(activeEntitlement?.expirationDate);
+
+  if (btn) btn.hidden = !(webManaged && url);
+
+  if (storeManaged) {
+    if (isSubscription) {
+      // Renewing (or cancelled-but-active) store subscription: tell the user where
+      // to change/cancel it, since that can only be done in the store.
+      const key =
+        store === "play_store"
+          ? "manage_note_play"
+          : store === "amazon"
+          ? "manage_note_amazon"
+          : "manage_note_appstore";
+      setMsg("manage-store-note", key);
+    } else {
+      // Non-subscription store purchase (e.g. the legacy lifetime buy-out): nothing
+      // to cancel, but note that it came from the store and where to review it.
+      const nameKey =
+        store === "play_store"
+          ? "store_name_play"
+          : store === "amazon"
+          ? "store_name_amazon"
+          : "store_name_appstore";
+      setMsg("manage-store-note", "manage_note_lifetime", { store: t(nameKey) });
+    }
+  } else {
+    setMsg("manage-store-note", null);
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Apply language
 // ---------------------------------------------------------------------------
@@ -365,6 +447,7 @@ function applyLang(lang) {
   // Re-render dynamic elements.
   renderPrice();
   renderActiveExpiry();
+  renderManageControls();
   refreshPasswordToggles();
   Object.entries(shownMessages).forEach(([nodeId, { key, params }]) => {
     const node = el(nodeId);
@@ -419,10 +502,12 @@ async function resolveEntitlementState(user) {
         expirationDate: rawExpiry ? new Date(rawExpiry) : null,
         willRenew: Boolean(ent?.willRenew),
         managementUrl: customerInfo.managementURL ?? null,
+        // Store enum (purchases-js is lowercase): app_store | mac_app_store |
+        // play_store | amazon | stripe | rc_billing | promotional | unknown.
+        store: (ent?.store || "").toLowerCase(),
       };
       renderActiveExpiry();
-      const manageBtn = el("btn-manage");
-      if (manageBtn) manageBtn.hidden = !activeEntitlement.managementUrl;
+      renderManageControls();
       const banner = el("active-banner");
       if (banner) banner.hidden = !justPurchased;
       settingsReturnView = "active";
@@ -692,7 +777,17 @@ async function handlePurchase() {
 
 function handleManage() {
   const url = activeEntitlement?.managementUrl;
-  if (url) window.open(url, "_blank", "noopener");
+  if (!url) return;
+  // Note: do NOT pass "noopener" as the window-features argument — some browsers
+  // then treat this as a popup and the pop-up blocker silently swallows it
+  // (window.open returns null, nothing happens). Open a normal tab and drop the
+  // opener reference manually; fall back to same-tab navigation if it's blocked.
+  const win = window.open(url, "_blank");
+  if (win) {
+    win.opener = null;
+  } else {
+    window.location.assign(url);
+  }
 }
 
 // ---------------------------------------------------------------------------

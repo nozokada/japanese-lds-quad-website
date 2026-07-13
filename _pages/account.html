@@ -9,6 +9,11 @@ include_in_header: true
   /* Sizing in px (the site root is 62.5% = 10px, so rem would render tiny).
      Fonts/colors inherit from .markdown-body (Lato 16px) for consistency with
      the other sub-pages; form controls get font-family: inherit explicitly. */
+  /* Ensure the [hidden] attribute always wins. Several controls set an explicit
+     display (e.g. .btn-primary { display:block }) which has the same specificity
+     as the UA [hidden]{display:none} rule and, coming later, would otherwise keep
+     a hidden element visible (e.g. the manage-subscription button). */
+  [hidden] { display: none !important; }
   .purchase-wrap { max-width: 460px; margin: 0 auto; }
   .purchase-wrap h1 { margin-bottom: 8px; }
   .purchase-lead { color: rgba(0,0,0,0.6); margin-bottom: 28px; line-height: 1.6; }
@@ -68,6 +73,12 @@ include_in_header: true
     padding: 11px 14px; margin: 0 0 16px; color: #1e7e34; font-weight: 600;
   }
   .note { font-size: 13px; color: rgba(0,0,0,0.5); line-height: 1.6; margin-top: 20px; }
+  /* Value proposition shown on the signed-out card to encourage sign-up/purchase. */
+  .value-prop {
+    background: #eef3fe; border: 1px solid #d3e0fb; border-radius: 9px;
+    padding: 11px 14px; margin: 0 0 20px; color: #1d4ed8;
+    font-size: 14px; font-weight: 600; line-height: 1.5;
+  }
   .field-hint { font-size: 12px; color: rgba(0,0,0,0.5); line-height: 1.5; margin-top: 6px; }
   .spinner { text-align: center; color: #888; padding: 32px 0; }
   .trust-badge { display: flex; justify-content: center; margin-top: 18px; }
@@ -119,6 +130,7 @@ include_in_header: true
 
   <!-- Signed out: sign in / create account -->
   <div id="view-signed-out" class="purchase-card" hidden>
+    <p class="value-prop" data-i18n="promo_annual">年額プランなら、月額よりお得にご利用いただけます。</p>
     <div class="auth-tabs" role="tablist">
       <button type="button" id="tab-signin" class="auth-tab" role="tab" aria-selected="true" data-i18n="tab_signin">サインイン</button>
       <button type="button" id="tab-signup" class="auth-tab" role="tab" aria-selected="false" data-i18n="tab_signup">アカウント作成</button>
@@ -185,7 +197,7 @@ include_in_header: true
     <p id="signedin-info" class="msg-info" hidden></p>
     <h2 style="margin-top:0;" data-i18n="premium_title">Gappon Premium</h2>
     <div class="plan-row">
-      <span class="plan-name" data-i18n="plan_name">年額サブスクリプション</span>
+      <span class="plan-name" data-i18n="plan_name">年額プラン</span>
       <span class="plan-price" id="plan-price"></span>
     </div>
     <button type="button" id="btn-purchase" class="btn-primary" data-i18n="btn_purchase">お支払いへ進む</button>
@@ -205,6 +217,7 @@ include_in_header: true
     <p id="active-expiry" class="account-line" hidden></p>
     <p data-i18n="active_body"></p>
     <button type="button" id="btn-manage" class="btn-primary" data-i18n="btn_manage" hidden>サブスクリプションを管理</button>
+    <p id="manage-store-note" class="note" hidden></p>
     <p class="note" data-i18n="note_account"></p>
   </div>
 
