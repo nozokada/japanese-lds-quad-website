@@ -9,7 +9,7 @@
 //
 // The chosen language is stored in localStorage ("gappon_lang") and defaults to
 // Japanese unless the browser language is English. Other scripts (e.g.
-// purchase.js) can read the language and react to changes via `window.Gappon.i18n`.
+// account.js) can read the language and react to changes via `window.Gappon.i18n`.
 
 (function () {
   var STORAGE_KEY = "gappon_lang";

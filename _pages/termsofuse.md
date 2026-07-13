@@ -16,7 +16,7 @@ Gappon is a freemium app offered by Nozomi Okada. It is a bilingual scripture re
 By downloading or using the app, you agree to these terms. Please read them carefully before using the service.
 
 ## User Accounts
-You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. Please notify us immediately at [nozokada@gmail.com](mailto:nozokada@gmail.com) if you become aware of any unauthorized use of your account.
+You can create a Gappon account either in the app or on this website. You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. Please notify us immediately at [nozokada@gmail.com](mailto:nozokada@gmail.com) if you become aware of any unauthorized use of your account.
 
 ## Acceptable Use
 You agree not to:
@@ -74,7 +74,7 @@ Gappon（以下「本アプリ」といいます）は、Nozomi Okadaが提供�
 本アプリをダウンロードまたは使用することで、本利用規約に同意したものとみなされます。本サービスをご利用になる前に、必ずお読みください。
 
 ## ユーザーアカウント
-利用者は、アカウントの認証情報の機密保持、およびアカウント上で行われるすべての活動について責任を負います。アカウントへの不正アクセスを発見した場合は、直ちに[nozokada@gmail.com](mailto:nozokada@gmail.com)までご連絡ください。
+Gapponのアカウントは、本アプリまたは本ウェブサイトのいずれでも作成できます。利用者は、アカウントの認証情報の機密保持、およびアカウント上で行われるすべての活動について責任を負います。アカウントへの不正アクセスを発見した場合は、直ちに[nozokada@gmail.com](mailto:nozokada@gmail.com)までご連絡ください。
 
 ## 禁止事項
 利用者は以下の行為を行ってはなりません。

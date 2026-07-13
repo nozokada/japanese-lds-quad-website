@@ -31,7 +31,8 @@ bundle exec jekyll serve --livereload
 Then open:
 
 - Home page: http://127.0.0.1:4000/
-- Purchase page: http://127.0.0.1:4000/purchase/
+- Account page (sign in, create account, purchase, manage): http://127.0.0.1:4000/account/
+- The old `/purchase/` URL redirects to `/account/`.
 
 `--livereload` automatically reloads the browser whenever you save a file.
 

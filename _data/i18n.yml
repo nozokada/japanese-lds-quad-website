@@ -6,6 +6,9 @@
 # in each page inside `data-i18n-block` containers.
 
 # Navigation / footer links (keyed by each page's `nav_key` front matter)
+nav_account:
+  ja: "マイアカウント"
+  en: "My Account"
 nav_purchase:
   ja: "プレミアム購入"
   en: "Purchase Premium"
