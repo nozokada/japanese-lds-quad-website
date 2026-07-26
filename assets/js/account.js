@@ -109,6 +109,9 @@ const I18N = {
     section_change_email: "メールアドレスの変更",
     section_change_password: "パスワードの変更",
     label_new_email: "新しいメールアドレス",
+    label_new_email_confirm: "新しいメールアドレス（確認のため再入力）",
+    hint_email_change:
+      "確認リンクを新しいアドレス宛にお送りします。受信できるアドレスをご入力ください。変更は、そのリンクを開いた時点で完了します。",
     label_new_password: "新しいパスワード",
     label_new_password_confirm: "新しいパスワード（確認）",
     btn_update_username: "ユーザー名を変更",
@@ -219,6 +222,9 @@ const I18N = {
     section_change_email: "Change email",
     section_change_password: "Change password",
     label_new_email: "New email address",
+    label_new_email_confirm: "New email (re-enter to confirm)",
+    hint_email_change:
+      "We'll send a confirmation link to the new address. Enter an address you can receive mail at — the change takes effect only after you open that link.",
     label_new_password: "New password",
     label_new_password_confirm: "New password (confirm)",
     btn_update_username: "Change username",
@@ -797,9 +803,12 @@ function openSettings() {
   el("form-change-username").reset();
   // Prefill with the current display name so it's clear what the username is now.
   el("new-username").value = auth.currentUser?.displayName || "";
+  el("form-change-email").reset();
   el("form-change-password").reset();
   setMsg("username-error", null);
   setMsg("username-info", null);
+  setMsg("email-error", null);
+  setMsg("email-info", null);
   setMsg("password-error", null);
   setMsg("password-info", null);
   resetPasswordVisibility();
@@ -912,53 +921,62 @@ async function handleChangeUsername(event) {
 }
 
 // ---------------------------------------------------------------------------
-// Event: change email — deferred (see ADR-007). Kept for future restoration.
-// Without a backend, a mistyped/unreachable new address can lock a web purchaser
-// out of their account (no restore path), so email change is not offered on the
-// web for now. Re-enable this handler, emailUpdateErrorKey, the HTML section, and
-// the wiring together to bring it back.
+// Event: change email
+// Uses verifyBeforeUpdateEmail, which sends a confirmation link to the NEW
+// address; the change only takes effect once that link is opened. That keeps a
+// mistyped/unreachable address from ever becoming the login identity. The new
+// address is entered twice (confirm field) to catch typos into a deliverable-but-
+// wrong inbox — Web purchasers have no restore path. Firebase enforces email
+// uniqueness, so changing to an address already registered to another account is
+// rejected with auth/email-already-in-use.
 // ---------------------------------------------------------------------------
 
-// async function handleChangeEmail(event) {
-//   event.preventDefault();
-//   setMsg("email-error", null);
-//   setMsg("email-info", null);
-//   const user = auth.currentUser;
-//   const newEmail = el("new-email").value.trim();
-//   if (!user) return;
-//   if (!newEmail) {
-//     setMsg("email-error", "err_invalid_email");
-//     return;
-//   }
-//   const btn = el("btn-update-email");
-//   btn.disabled = true;
-//   // verifyBeforeUpdateEmail sends a confirmation link to the NEW address; the
-//   // change only takes effect once that link is opened. The Firebase UID (and thus
-//   // the RevenueCat App User ID and the entitlement) is unaffected.
-//   await runSensitive(
-//     () => verifyBeforeUpdateEmail(user, newEmail),
-//     () => {
-//       setMsg("email-info", "info_email_update_sent", { email: newEmail });
-//       el("new-email").value = "";
-//     },
-//     "email-error",
-//     emailUpdateErrorKey
-//   );
-//   btn.disabled = false;
-// }
-//
-// function emailUpdateErrorKey(err) {
-//   switch (err?.code) {
-//     case "auth/invalid-email":
-//       return "err_invalid_email";
-//     case "auth/email-already-in-use":
-//       return "err_email_in_use";
-//     case "auth/network-request-failed":
-//       return "err_network";
-//     default:
-//       return "err_email_update_generic";
-//   }
-// }
+async function handleChangeEmail(event) {
+  event.preventDefault();
+  setMsg("email-error", null);
+  setMsg("email-info", null);
+  const user = auth.currentUser;
+  const newEmail = el("new-email").value.trim();
+  const newEmailConfirm = el("new-email-confirm").value.trim();
+  if (!user) return;
+  if (!newEmail) {
+    setMsg("email-error", "err_invalid_email");
+    return;
+  }
+  // Sync check against typos: mirror the sign-up confirm-email guard so a
+  // mistyped-but-deliverable address can't silently become the login identity.
+  if (newEmail.toLowerCase() !== newEmailConfirm.toLowerCase()) {
+    setMsg("email-error", "err_email_mismatch");
+    return;
+  }
+  const btn = el("btn-update-email");
+  btn.disabled = true;
+  // The Firebase UID (and thus the RevenueCat App User ID and the entitlement) is
+  // unaffected by an email change.
+  await runSensitive(
+    () => verifyBeforeUpdateEmail(user, newEmail),
+    () => {
+      setMsg("email-info", "info_email_update_sent", { email: newEmail });
+      el("form-change-email").reset();
+    },
+    "email-error",
+    emailUpdateErrorKey
+  );
+  btn.disabled = false;
+}
+
+function emailUpdateErrorKey(err) {
+  switch (err?.code) {
+    case "auth/invalid-email":
+      return "err_invalid_email";
+    case "auth/email-already-in-use":
+      return "err_email_in_use";
+    case "auth/network-request-failed":
+      return "err_network";
+    default:
+      return "err_email_update_generic";
+  }
+}
 
 // ---------------------------------------------------------------------------
 // Event: change password
@@ -1109,7 +1127,7 @@ el("link-forgot")?.addEventListener("click", handleForgotPassword);
 el("btn-purchase")?.addEventListener("click", handlePurchase);
 el("btn-manage")?.addEventListener("click", handleManage);
 el("form-change-username")?.addEventListener("submit", handleChangeUsername);
-// el("form-change-email")?.addEventListener("submit", handleChangeEmail); // deferred (ADR-007)
+el("form-change-email")?.addEventListener("submit", handleChangeEmail);
 el("form-change-password")?.addEventListener("submit", handleChangePassword);
 el("form-reauth")?.addEventListener("submit", handleReauthConfirm);
 document.querySelectorAll("[data-action='signout']").forEach((b) =>

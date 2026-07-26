@@ -251,10 +251,12 @@ include_in_header: true
 
     <hr class="settings-divider">
 
-    <!-- メールアドレス変更は一旦保留（コメントアウト）。
-         バックエンド無しでは、新アドレスの打ち間違い・受信不能でログイン資格情報を失うと
-         Web 購入者には復元手段が無く、購入した機能へ永久ロックアウトになるフットガンがあるため。
-         再開する場合はこのブロックと account.js 側の handleChangeEmail / 配線を復活させる。
+    <!-- Change email. verifyBeforeUpdateEmail sends a confirmation link to the new
+         address; the change only takes effect once that link is opened (a safe flow
+         that avoids locking the user out via an unreachable address). The new address
+         is entered twice (confirm field) to guard against typos, mirroring sign-up.
+         Firebase rejects a change to an already-registered address with
+         auth/email-already-in-use. -->
     <div class="settings-section">
       <h3 data-i18n="section_change_email">メールアドレスの変更</h3>
       <form id="form-change-email">
@@ -262,14 +264,18 @@ include_in_header: true
           <label for="new-email" data-i18n="label_new_email">新しいメールアドレス</label>
           <input type="email" id="new-email" autocomplete="off" inputmode="email" required>
         </div>
+        <div class="purchase-field">
+          <label for="new-email-confirm" data-i18n="label_new_email_confirm">新しいメールアドレス（確認のため再入力）</label>
+          <input type="email" id="new-email-confirm" autocomplete="off" inputmode="email" required>
+        </div>
         <button type="submit" id="btn-update-email" class="btn-primary" data-i18n="btn_update_email">メールアドレスを変更</button>
         <p id="email-error" class="msg-error" hidden></p>
         <p id="email-info" class="msg-info" hidden></p>
+        <p class="field-hint" data-i18n="hint_email_change"></p>
       </form>
     </div>
 
     <hr class="settings-divider">
-    -->
 
 
     <div class="settings-section">
