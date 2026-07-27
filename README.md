@@ -1,7 +1,7 @@
 # japanese-lds-quad-website
 
-Marketing site for the Japanese LDS Quad app, published at
-[japanese.ldsquad.app](https://japanese.ldsquad.app). Built with
+Marketing site for the Gappon app, published at
+[gappon.app](https://gappon.app). Built with
 [Jekyll](https://jekyllrb.com/) and served via GitHub Pages.
 
 ## Running locally
