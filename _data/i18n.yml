@@ -27,11 +27,6 @@ app_description:
   ja: "日本語話者のための必携の末日聖徒標準聖典アプリ"
   en: "The must-have LDS standard works app for Japanese-speaking people"
 
-# Footer credit. {name} and {city} are filled from _config.yml at runtime.
-footer_made_by:
-  ja: "制作: {name}（{city}）"
-  en: "Made by {name} in {city}"
-
 # Feature grid (keys match the `key` of each entry in _config.yml `features`)
 all_in_one_title:
   ja: "オールインワン"

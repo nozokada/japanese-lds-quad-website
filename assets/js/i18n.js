@@ -43,33 +43,6 @@
     return s;
   }
 
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
-
-  // Footer credit line: "Made by {name} in {city}", where {name} is optionally a
-  // link. Values come from data-* attributes (rendered by Jekyll from _config.yml)
-  // so the string table stays generic and free of personal details.
-  function applyCredit() {
-    var node = document.querySelector("[data-i18n-credit]");
-    if (!node) return;
-    var tmpl = lookup("footer_made_by");
-    if (tmpl == null) return;
-    var name = node.getAttribute("data-name") || "";
-    var link = node.getAttribute("data-link") || "";
-    var city = node.getAttribute("data-city") || "";
-    var nameHtml = link
-      ? '<a href="' + escapeHtml(link) + '">' + escapeHtml(name) + "</a>"
-      : escapeHtml(name);
-    node.innerHTML = escapeHtml(tmpl)
-      .replace("{name}", nameHtml)
-      .replace("{city}", escapeHtml(city));
-  }
-
   function apply() {
     var d = document.documentElement;
     d.lang = currentLang;
@@ -79,8 +52,6 @@
       var val = lookup(node.getAttribute("data-i18n"));
       if (val != null) node.textContent = val;
     });
-
-    applyCredit();
 
     var desc = document.querySelector('meta[name="description"]');
     var metaDesc = lookup("app_description");
